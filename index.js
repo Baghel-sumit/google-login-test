@@ -3,6 +3,7 @@ const client_id = "299371230166-84u5qlbm0j2fkntbm8vouqj5nc250k4q.apps.googleuser
 function handleCredentialResponse(response) {
     console.log("hey i am executed");
     console.log("Encoded JWT ID token: " + response.credential);
+    console.log("response from google:", response);
 }
 window.onload = function () {
     console.log("hey i am here");

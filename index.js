@@ -1,4 +1,5 @@
-const client_id = "299371230166-84u5qlbm0j2fkntbm8vouqj5nc250k4q.apps.googleusercontent.com";
+const container = document.getElementById('container');
+const tokenContainer = document.getElementById('token');
 
 function parseJwt (token) {
   var base64Url = token.split('.')[1];
@@ -13,18 +14,7 @@ function parseJwt (token) {
 
 function handleCredentialResponse(response) {
     const token =  response.credential;
-    console.log("Encoded JWT ID token: " + token);
-    console.log("response from google:", parseJwt(token))
-}
-window.onload = function () {
-    console.log("hey i am here");
-  google.accounts.id.initialize({
-    client_id,
-    callback: handleCredentialResponse
-  });
-  google.accounts.id.renderButton(
-    document.getElementById("buttonDiv"),
-    { theme: "outline", size: "large" }  // customization attributes
-  );
-  google.accounts.id.prompt(); // also display the One Tap dialog
+    tokenContainer.innerText = token;
+    const data = parseJwt(token);
+    container.innerText = JSON.stringify(data);
 }

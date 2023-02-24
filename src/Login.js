@@ -8,7 +8,7 @@ const Login = () => {
     const tokenDecoder = (token)=>{
         const data = jwtDecode(token);
         console.log("the data", data)
-        setDetails(JSON.stringify(data));
+        setDetails(JSON.stringify(data, null, 4));
     }
   return (
     <div>
